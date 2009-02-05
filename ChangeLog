@@ -1,0 +1,5 @@
+2009-02-05  Alan Watson <Alan.Watson@cern.ch>
+       * First tag of package.
+         Purpose of this package is to hold L1Calo event data.
+         Some of these items are purely transient, the majority are
+         persistifiable. Previously they were members of TrigT1Calo.
