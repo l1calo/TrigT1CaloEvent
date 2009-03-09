@@ -47,7 +47,7 @@ unsigned int LVL1::EmTauROI::roiWord() const{
 
 /** returns TRUE if threshold number threshold_number has been passed by
 this ROI. */
-const bool LVL1::EmTauROI::thresholdPassed(int thresh) const {
+bool LVL1::EmTauROI::thresholdPassed(int thresh) const {
 
 	if (m_roiWord & (1<<(thresh-1)) ){
 		return true;
@@ -57,7 +57,7 @@ const bool LVL1::EmTauROI::thresholdPassed(int thresh) const {
 }
 
 /** returns type of thresholds number <em>threshold_number</em>.*/
-const TrigT1CaloDefs::ClusterAlgorithm LVL1::EmTauROI::thresholdType(int thresh) const{
+TrigT1CaloDefs::ClusterAlgorithm LVL1::EmTauROI::thresholdType(int thresh) const{
 	// This information is currently stored as a vector 
 	// within all EmTauROIs. This is not ideal - I
 	// would rather it was looked up from a database.
@@ -80,18 +80,18 @@ const TrigT1CaloDefs::ClusterAlgorithm LVL1::EmTauROI::thresholdType(int thresh)
 
 
 /** returns eta coord of ROI */
-const double LVL1::EmTauROI::eta() const {
+double LVL1::EmTauROI::eta() const {
   return m_eta;
 }
 
 /** returns phi coord of ROI */
-const double LVL1::EmTauROI::phi() const {
+double LVL1::EmTauROI::phi() const {
   return m_phi;
 }
 
 
 /**returns energy of ROI core*/
-const int LVL1::EmTauROI::energy() const {
+int LVL1::EmTauROI::energy() const {
 	return m_energy;
 }
 
@@ -100,7 +100,7 @@ trigger tower that was saturated - in other
 words this ROI is signalling that it does not
 know its correct energy.
 */
-const bool LVL1::EmTauROI::saturated() const {
+bool LVL1::EmTauROI::saturated() const {
   // Saturation flag is bit 16 of RoIWord
   bool sat = (m_roiWord >> 16)&0x1;
   return sat;

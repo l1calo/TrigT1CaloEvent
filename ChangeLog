@@ -1,3 +1,6 @@
+2009-03-09  Alan Watson <Alan.Watson@cern.ch>
+       * EmTauROI, JetROI: fix gcc43 warnings
+
 2009-02-05  Alan Watson <Alan.Watson@cern.ch>
        * First tag of package.
          Purpose of this package is to hold L1Calo event data.

@@ -44,45 +44,45 @@ unsigned int LVL1::JetROI::roiWord() const{
 
 /** returns TRUE if threshold number threshold_number has been passed by 
 this ROI. */
-const bool LVL1::JetROI::thresholdPassed(int thresh) const {
+bool LVL1::JetROI::thresholdPassed(int thresh) const {
   if (m_roiWord & (1<<(thresh-1)) )return true;
   return false;
 }
 
 /** returns TRUE if threshold number threshold_number has been passed by
 this ROI. */
-const bool LVL1::JetROI::fwdThresholdPassed(int thresh) const {
+bool LVL1::JetROI::fwdThresholdPassed(int thresh) const {
   if (m_roiWord & (1<<(thresh+7)) )return true;
   return false;
 }
 
 /** returns true if the RoI is a forward jet*/
-const bool LVL1::JetROI::isForward() const{
+bool LVL1::JetROI::isForward() const{
   if ((m_eta<-3.1)||(m_eta>3.1)) return true;
   return false;
 }
 
 /** returns type of thresholds number <em>threshold_number</em>.
 \todo implement*/
-const LVL1::TrigT1CaloDefs::JetWindowSize LVL1::JetROI::thresholdType(int /*thresh*/) const{
+LVL1::TrigT1CaloDefs::JetWindowSize LVL1::JetROI::thresholdType(int /*thresh*/) const{
   // shouldn't ever be reached.
   return TrigT1CaloDefs::JetWinError;
 }
 
 
 /** returns eta coord of ROI */
-const double LVL1::JetROI::eta() const {
+double LVL1::JetROI::eta() const {
   return m_eta;
 }
 
 /** returns phi coord of ROI */
-const double LVL1::JetROI::phi() const {
+double LVL1::JetROI::phi() const {
   return m_phi;
 }
 
 
 /**returns energy of ROI core*/
-const int LVL1::JetROI::energy() const {
+int LVL1::JetROI::energy() const {
 	return m_energy;
 }
 
@@ -91,7 +91,7 @@ const int LVL1::JetROI::energy() const {
 	words this ROI is signalling that it does not
 	know it's correct energy. 
 	*/
-const bool LVL1::JetROI::saturated() const {
+bool LVL1::JetROI::saturated() const {
   return m_isSaturated;
 }
 

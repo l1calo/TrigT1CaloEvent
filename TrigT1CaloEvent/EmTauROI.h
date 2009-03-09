@@ -51,37 +51,33 @@ that happens in the ROD simulation, so this class has some extra methods used fo
     ~EmTauROI();
 
     /** returns the 32bit ROI word. This is defined
-	in the ATLAS note daq-98-089.<p>
-	NOTE: at the moment this is not properly implemented
-	Bits are not correctly set for anything other than
-	thresholds passed. */    
+	in the ATLAS note daq-98-089.*/
     unsigned int roiWord() const;
 
     /** returns TRUE if ROI constructed from a 
 	trigger tower that was saturated - in other
 	words this ROI is signalling that it does not
 	know its correct energy. 
-	*\todo implement
 	*/
-    const bool saturated() const;
+    bool saturated() const;
 
     /** returns phi coord of ROI */
-    const double phi() const;
+    double phi() const;
 
     /** returns eta coord of ROI */
-    const double eta() const;
+    double eta() const;
 		
     /** returns the energy of the ROI core, i.e. the summed (in both layers)
     energy of the central 4 TriggerTowers*/
-    const int energy() const;
+    int energy() const;
 
     /** returns TRUE if threshold number <em>threshold_number</em> has been passed 
 	by this ROI. Thresholds numbered from 1 to TrigT1CaloDefs::numOfCPThresholds*/
-    const bool thresholdPassed(int thresh) const;
+    bool thresholdPassed(int thresh) const;
 	
     /** returns type of thresholds number <em>threshold_number</em>
   Thresholds numbered from 1 to TrigT1CaloDefs::numOfCPThresholds*/
-    const TrigT1CaloDefs::ClusterAlgorithm thresholdType(int thresh) const;
+    TrigT1CaloDefs::ClusterAlgorithm thresholdType(int thresh) const;
 
 
  /** return energy */

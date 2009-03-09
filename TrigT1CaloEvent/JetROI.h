@@ -56,30 +56,30 @@ for analysis, and JEMRoI for bytestream decoding and monitoring.
 	words this ROI is signalling that it does not
 	know it's correct energy. 
 	*\todo implement*/
-  const bool saturated() const;
+  bool saturated() const;
 
   /** returns phi coord of ROI */
-  const double phi() const;
+  double phi() const;
 
   /** returns eta coord of ROI */
-  const double eta() const;
+  double eta() const;
 
   /** returns the energy*/
-  const int energy() const;
+  int energy() const;
 
   /** returns TRUE if threshold number <em>threshold_number</em> has been passed 
   by this ROI. 1st threshold is thresh 1 */
-  const bool thresholdPassed(int threshold_number) const;
+  bool thresholdPassed(int threshold_number) const;
 
   /** returns TRUE if threshold number <em>threshold_number</em> has been passed
   by this ROI. 1st threshold is thresh 1 */
-  const bool fwdThresholdPassed(int threshold_number) const;
+  bool fwdThresholdPassed(int threshold_number) const;
     
   /** returns true if the RoI is a forward jet*/
-  const bool isForward() const;
+  bool isForward() const;
 
   /** returns type of thresholds number <em>threshold_number</em>*/
-  const TrigT1CaloDefs::JetWindowSize thresholdType(int threshold_number) const;
+  TrigT1CaloDefs::JetWindowSize thresholdType(int threshold_number) const;
   /** returns the most energetic cluster from window size 4 */
   unsigned int clusterEnergy4() const { return m_cluster4;} 
   /** returns the most energetic cluster from window size 6 */
