@@ -103,11 +103,18 @@ const std::vector<int> & TriggerTower::hadADC() const
 
 /** returns BCID word for peak EM sample */
 int LVL1::TriggerTower::emBCID() const {
+  /// Fix for misfilled MC TriggerTowers
+  if (m_em_BCID.size() != m_em_energy.size() && 
+      m_em_BCID.size() == m_em_adc.size()) return m_em_BCID[m_em_adc_peak];
+  
   return m_em_BCID[m_em_peak]; 
 }
 
 /** returns BCID word for peak had sample */
 int LVL1::TriggerTower::hadBCID() const {
+  if (m_had_BCID.size() != m_had_energy.size() && 
+      m_had_BCID.size() == m_had_adc.size()) return m_had_BCID[m_had_adc_peak];
+  
   return m_had_BCID[m_had_peak]; 
 }
 
