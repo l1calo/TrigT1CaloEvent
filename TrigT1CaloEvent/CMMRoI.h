@@ -23,36 +23,40 @@ class CMMRoI {
    CMMRoI(uint32_t jetEtRoiWord,   uint32_t energyRoiWord0,
           uint32_t energyRoiWord1, uint32_t energyRoiWord2);
    CMMRoI(int jetEtHits, int sumEtHits, int missingEtHits,
-          int ex, int ey, int et,
+          int missingEtSigHits, int ex, int ey, int et,
           int jetEtError, int sumEtError, int missingEtError,
-          int exError, int eyError, int etError);
+          int missingEtSigError, int exError, int eyError, int etError);
 
    ~CMMRoI();
 
    /// Return Jet-ET hits
-   int jetEtHits()      const;
+   int jetEtHits()         const;
    /// Return Sum-ET hits
-   int sumEtHits()      const;
+   int sumEtHits()         const;
    /// Return Missing-ET hits
-   int missingEtHits()  const;
+   int missingEtHits()     const;
+   /// Return Missing-ET-Sig hits
+   int missingEtSigHits()  const;
    /// Return Ex
-   int ex()             const;
+   int ex()                const;
    /// Return Ey
-   int ey()             const;
+   int ey()                const;
    /// Return Et
-   int et()             const;
+   int et()                const;
    /// Return Jet-ET error flag (bit 1 Parity)
-   int jetEtError()     const;
+   int jetEtError()        const;
    /// Return Sum-ET error flag (bit 1 Parity)
-   int sumEtError()     const;
+   int sumEtError()        const;
    /// Return Missing-ET error flag (bit 1 Parity)
-   int missingEtError() const;
+   int missingEtError()    const;
+   /// Return Missing-ET-Sig error flag (bit 1 Parity)
+   int missingEtSigError() const;
    /// Return Ex error flags (bit 0 Overflow, bit 1 Parity)
-   int exError()        const;
+   int exError()           const;
    /// Return Ey error flags (bit 0 Overflow, bit 1 Parity)
-   int eyError()        const;
+   int eyError()           const;
    /// Return Et error flags (bit 0 Overflow, bit 1 Parity)
-   int etError()        const;
+   int etError()           const;
 
    /// Return packed Jet-Et RoI word
    uint32_t jetEtRoiWord()   const;
@@ -68,27 +72,29 @@ class CMMRoI {
  private:
 
    //  RoI word IDs
-   static const int s_jetEtWordIdVal    = 0x5;
-   static const int s_wordIdVal0        = 0x4;
-   static const int s_wordIdVal1        = 0x6;
-   static const int s_wordIdVal2        = 0x5;
+   static const int s_jetEtWordIdVal       = 0x5;
+   static const int s_wordIdVal0           = 0x4;
+   static const int s_wordIdVal1           = 0x6;
+   static const int s_wordIdVal2           = 0x5;
    //  Data locations
-   static const int s_jetEtWordIdBit    = 29;
-   static const int s_wordIdBit         = 28;
-   static const int s_jetEtHitsBit      = 0;
-   static const int s_sumEtHitsBit      = 16;
-   static const int s_missingEtHitsBit  = 16;
-   static const int s_energyBit         = 0;
-   static const int s_jetEtParityBit    = 28;
-   static const int s_parityBit         = 27;
-   static const int s_overflowBit       = 15;
+   static const int s_jetEtWordIdBit       = 29;
+   static const int s_wordIdBit            = 28;
+   static const int s_jetEtHitsBit         = 0;
+   static const int s_sumEtHitsBit         = 16;
+   static const int s_missingEtHitsBit     = 16;
+   static const int s_missingEtSigHitsBit  = 16;
+   static const int s_energyBit            = 0;
+   static const int s_jetEtParityBit       = 28;
+   static const int s_parityBit            = 27;
+   static const int s_overflowBit          = 15;
    //  Data masks
-   static const int s_jetEtWordIdMask   = 0x7;
-   static const int s_wordIdMask        = 0xf;
-   static const int s_jetEtHitsMask     = 0xf;
-   static const int s_sumEtHitsMask     = 0xf;
-   static const int s_missingEtHitsMask = 0xff;
-   static const int s_energyMask        = 0x7fff;
+   static const int s_jetEtWordIdMask      = 0x7;
+   static const int s_wordIdMask           = 0xf;
+   static const int s_jetEtHitsMask        = 0xf;
+   static const int s_sumEtHitsMask        = 0xff;
+   static const int s_missingEtHitsMask    = 0xff;
+   static const int s_missingEtSigHitsMask = 0xff;
+   static const int s_energyMask           = 0x7fff;
 
    /// Return Energy parity error (0/1)
    int parity(uint32_t roiWord) const;
@@ -116,6 +122,11 @@ inline int CMMRoI::sumEtHits() const
 inline int CMMRoI::missingEtHits() const
 {
   return (m_energyRoiWord2 >> s_missingEtHitsBit) & s_missingEtHitsMask;
+}
+
+inline int CMMRoI::missingEtSigHits() const
+{
+  return (m_energyRoiWord0 >> s_missingEtSigHitsBit) & s_missingEtSigHitsMask;
 }
 
 inline int CMMRoI::ex() const
@@ -146,6 +157,11 @@ inline int CMMRoI::sumEtError() const
 inline int CMMRoI::missingEtError() const
 {
   return parity(m_energyRoiWord2) << 1;
+}
+
+inline int CMMRoI::missingEtSigError() const
+{
+  return parity(m_energyRoiWord0) << 1;
 }
 
 inline int CMMRoI::exError() const

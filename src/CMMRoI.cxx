@@ -15,6 +15,7 @@ const int CMMRoI::s_wordIdBit;
 const int CMMRoI::s_jetEtHitsBit;
 const int CMMRoI::s_sumEtHitsBit;
 const int CMMRoI::s_missingEtHitsBit;
+const int CMMRoI::s_missingEtSigHitsBit;
 const int CMMRoI::s_energyBit;
 const int CMMRoI::s_jetEtParityBit;
 const int CMMRoI::s_parityBit;
@@ -25,6 +26,7 @@ const int CMMRoI::s_wordIdMask;
 const int CMMRoI::s_jetEtHitsMask;
 const int CMMRoI::s_sumEtHitsMask;
 const int CMMRoI::s_missingEtHitsMask;
+const int CMMRoI::s_missingEtSigHitsMask;
 const int CMMRoI::s_energyMask;
 
 CMMRoI::CMMRoI() : m_jetEtRoiWord(0),
@@ -44,9 +46,9 @@ CMMRoI::CMMRoI(uint32_t jetEtRoiWord,   uint32_t energyRoiWord0,
 }
 
 CMMRoI::CMMRoI(int jetEtHits, int sumEtHits, int missingEtHits,
-               int ex, int ey, int et,
+               int missingEtSigHits, int ex, int ey, int et,
 	       int jetEtError, int sumEtError, int missingEtError,
-	       int exError, int eyError, int etError)
+	       int missingEtSigError, int exError, int eyError, int etError)
 {
   m_jetEtRoiWord  =  s_jetEtWordIdVal                   << s_jetEtWordIdBit;
   m_jetEtRoiWord |= (jetEtHits       & s_jetEtHitsMask) << s_jetEtHitsBit;
@@ -56,6 +58,9 @@ CMMRoI::CMMRoI(int jetEtHits, int sumEtHits, int missingEtHits,
   m_energyRoiWord0 |= (ex & s_energyMask)           << s_energyBit;
   m_energyRoiWord0 |= (exError      & 0x1)          << s_overflowBit;
   m_energyRoiWord0 |= ((exError>>1) & 0x1)          << s_parityBit;
+  m_energyRoiWord0 |= (missingEtSigHits & s_missingEtSigHitsMask)
+                                                    << s_missingEtSigHitsBit;
+  m_energyRoiWord0 |= ((missingEtSigError>>1) & 0x1)<< s_parityBit;
 
   m_energyRoiWord1  =  s_wordIdVal1                 << s_wordIdBit;
   m_energyRoiWord1 |= (ey & s_energyMask)           << s_energyBit;

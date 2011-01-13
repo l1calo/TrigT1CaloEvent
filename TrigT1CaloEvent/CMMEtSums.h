@@ -37,7 +37,7 @@
     public:
 
     enum DataIDs { REMOTE = 16, LOCAL, TOTAL,
-                   MISSING_ET_MAP, SUM_ET_MAP, MAXID };
+                   MISSING_ET_MAP, SUM_ET_MAP, MISSING_ET_SIG_MAP, MAXID };
 
     /** Constructors */
     CMMEtSums();

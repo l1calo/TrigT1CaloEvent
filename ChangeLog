@@ -1,3 +1,6 @@
+2011-01-13  Peter Faulkner  <pjwf@hep.ph.bham.ac.uk>
+       * CMMEtSums,CMMRoI: Changes for MissingEtSig.
+
 2010-04-26  Alan Watson <Alan.Watson@CERN.CH>
        * src/TriggerTower.cxx: work-around for MC TT with wrong
          lengths of BCID result vectors
