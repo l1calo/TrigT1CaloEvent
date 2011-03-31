@@ -20,7 +20,24 @@
 namespace LVL1 {
 
 // default constructor for persistency
-LVL1::TriggerTower::TriggerTower::TriggerTower()
+LVL1::TriggerTower::TriggerTower::TriggerTower():
+	m_em_energy(1),
+        m_had_energy(1),
+	m_em_adc(1),
+        m_had_adc(1),
+	m_em_BCID(1),
+	m_had_BCID(1),
+	m_em_extBCID(1),
+	m_had_extBCID(1),
+	m_phi(0.0),
+	m_eta(0.0),
+        m_key(0),
+	m_em_error(0),
+	m_had_error(0),
+	m_em_peak(0),
+	m_em_adc_peak(0),
+	m_had_peak(0),
+	m_had_adc_peak(0)
  {
  }
 /** constructs a trigger tower and sets the key. */

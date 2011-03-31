@@ -20,7 +20,14 @@
 namespace LVL1 {
 
 // default constructor for persistency
-LVL1::CPMTower::CPMTower::CPMTower()
+LVL1::CPMTower::CPMTower::CPMTower():
+	m_em_energy(1),
+        m_had_energy(1),
+	m_em_error(1),
+	m_had_error(1),
+	m_phi(0.0),
+	m_eta(0.0),
+	m_peak(0)
  {
  }
 /** constructs a trigger tower and sets the key. */
