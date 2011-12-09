@@ -240,6 +240,8 @@ inline int RODHeader::payloadSize() const
 
 } // end namespace
 
+#ifndef RODHeader_ClassDEF_H
 #include "TrigT1CaloEvent/RODHeader_ClassDEF.h"
+#endif
 
 #endif

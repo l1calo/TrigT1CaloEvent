@@ -78,5 +78,8 @@
     };
   } // end of namespace
 
+#ifndef CPMHits_ClassDEF_H
 #include "TrigT1CaloEvent/CPMHits_ClassDEF.h"
+#endif
+
 #endif

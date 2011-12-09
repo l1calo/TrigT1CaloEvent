@@ -66,5 +66,8 @@
     };
   } // end of namespace
 
+#ifndef JetInput_ClassDEF_H
 #include "TrigT1CaloEvent/JetInput_ClassDEF.h"
+#endif
+
 #endif

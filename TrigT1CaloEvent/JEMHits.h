@@ -59,5 +59,8 @@
     };
   } // end of namespace
 
+#ifndef JEMHits_ClassDEF_H
 #include "TrigT1CaloEvent/JEMHits_ClassDEF.h"
+#endif
+
 #endif

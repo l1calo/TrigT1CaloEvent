@@ -2,7 +2,9 @@
 #define JETETROI_CLASSDEF_H
 //Put here the CLASS_DEF macros for the STL containers you put in StoreGate
 
+#ifndef JetEtRoI_H
 #include "TrigT1CaloEvent/JetEtRoI.h"
+#endif
 
 #include "CLIDSvc/CLASS_DEF.h"
 

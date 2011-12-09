@@ -2,7 +2,9 @@
 #define TriggerTower_ClassDEF_H
 //Put here the CLASS_DEF macros for the STL containers you put in StoreGate
 
+#ifndef TriggerTower_H
 #include "TrigT1CaloEvent/TriggerTower.h"
+#endif
 
 #include "CLIDSvc/CLASS_DEF.h"
 #include "DataModel/DataVector.h"

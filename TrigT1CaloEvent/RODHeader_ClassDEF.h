@@ -2,8 +2,9 @@
 #define RODHeader_ClassDEF_H
 //Put here the CLASS_DEF macros for the STL containers you put in StoreGate
 
-
+#ifndef TRIGT1CALO_RODHEADER_H
 #include "TrigT1CaloEvent/RODHeader.h"
+#endif
 
 #include "CLIDSvc/CLASS_DEF.h"
 #include "DataModel/DataVector.h"

@@ -2,8 +2,9 @@
 #define JetElement_ClassDEF_H
 //Put here the CLASS_DEF macros for the STL containers you put in StoreGate
 
-
+#ifndef JetElement_H
 #include "TrigT1CaloEvent/JetElement.h"
+#endif
 
 #include "CLIDSvc/CLASS_DEF.h"
 #include "DataModel/DataVector.h"

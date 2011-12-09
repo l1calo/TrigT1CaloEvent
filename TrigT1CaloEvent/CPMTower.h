@@ -103,6 +103,8 @@ public:
     };
   } // end of namespace
 
+#ifndef CPMTower_ClassDEF_H
 #include "TrigT1CaloEvent/CPMTower_ClassDEF.h"
+#endif
 
 #endif

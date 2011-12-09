@@ -148,6 +148,8 @@ public:
     };
   } // end of namespace
 
+#ifndef TriggerTower_ClassDEF_H
 #include "TrigT1CaloEvent/TriggerTower_ClassDEF.h"
+#endif
 
 #endif

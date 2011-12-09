@@ -85,5 +85,8 @@
     };
   } // end of namespace
 
+#ifndef CMMCPHits_ClassDEF_H
 #include "TrigT1CaloEvent/CMMCPHits_ClassDEF.h"
+#endif
+
 #endif

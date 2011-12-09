@@ -121,6 +121,8 @@ inline int CPMRoI::saturation() const
 
 } // end namespace
 
+#ifndef CPMRoI_ClassDEF_H
 #include "TrigT1CaloEvent/CPMRoI_ClassDEF.h"
+#endif
 
 #endif

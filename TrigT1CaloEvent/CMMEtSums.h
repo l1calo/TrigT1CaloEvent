@@ -97,7 +97,10 @@
     };
   } // end of namespace
 
+#ifndef CMMEtSums_ClassDEF_H
 #include "TrigT1CaloEvent/CMMEtSums_ClassDEF.h"
+#endif
+
 #endif
 
 

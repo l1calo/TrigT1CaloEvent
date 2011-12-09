@@ -128,6 +128,8 @@ inline int JEMRoI::saturation() const
 
 } // end namespace
 
+#ifndef JEMRoI_ClassDEF_H
 #include "TrigT1CaloEvent/JEMRoI_ClassDEF.h"
+#endif
 
 #endif

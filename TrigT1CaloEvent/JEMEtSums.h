@@ -71,5 +71,8 @@
     };
   } // end of namespace
 
+#ifndef JEMEtSums_ClassDEF_H
 #include "TrigT1CaloEvent/JEMEtSums_ClassDEF.h"
+#endif
+
 #endif

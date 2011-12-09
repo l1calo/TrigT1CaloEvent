@@ -123,5 +123,8 @@ namespace LVL1 {
     };
   } // end of namespace
 
+#ifndef JetElement_ClassDEF_H
 #include "TrigT1CaloEvent/JetElement_ClassDEF.h"
+#endif
+
 #endif

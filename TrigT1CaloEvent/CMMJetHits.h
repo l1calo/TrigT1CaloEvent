@@ -80,5 +80,8 @@
     };
   } // end of namespace
 
+#ifndef CMMJetHits_ClassDEF_H
 #include "TrigT1CaloEvent/CMMJetHits_ClassDEF.h"
+#endif
+
 #endif

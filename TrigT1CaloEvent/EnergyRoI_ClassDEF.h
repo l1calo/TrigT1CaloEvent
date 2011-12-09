@@ -2,7 +2,9 @@
 #define ENERGYROI_CLASSDEF_H
 //Put here the CLASS_DEF macros for the STL containers you put in StoreGate
 
+#ifndef EnergyRoI_H
 #include "TrigT1CaloEvent/EnergyRoI.h"
+#endif
 
 #include "CLIDSvc/CLASS_DEF.h"
 

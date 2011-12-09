@@ -53,6 +53,8 @@ private:
 
 }//end of LVL1 namespace defn
 
+#ifndef ENERGYROI_CLASSDEF_H
 #include "TrigT1CaloEvent/EnergyRoI_ClassDEF.h"
+#endif
 
 #endif

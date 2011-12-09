@@ -57,5 +57,8 @@ private:
 
 }//end of LVL1 namespace defn
 
+#ifndef JETETROI_CLASSDEF_H
 #include "TrigT1CaloEvent/JetEtRoI_ClassDEF.h"
+#endif
+
 #endif
