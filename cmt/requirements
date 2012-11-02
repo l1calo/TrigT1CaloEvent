@@ -3,7 +3,7 @@ author Alan Watson <Alan.Watson@cern.ch>
 
 use     AtlasPolicy     AtlasPolicy-*
 use     CLIDSvc         CLIDSvc-*        Control
-use     DataModel       DataModel-00-*   Control
+use     DataModel       DataModel-*   Control
 use     GaudiInterface  GaudiInterface-* External
 
 #Interfaces between the different parts of level1
@@ -16,7 +16,7 @@ apply_pattern declare_python_modules files="*.py"
 apply_pattern dual_use_library files=*.cxx
 
 private
-use AtlasReflex  AtlasReflex-00-*  External -no_auto_imports
+use AtlasReflex  AtlasReflex-*  External -no_auto_imports
 
 apply_pattern lcgdict dict=TrigT1CaloEvent selectionfile=selection.xml headerfiles="../TrigT1CaloEvent/TrigT1CaloEventDict.h"
 end_private

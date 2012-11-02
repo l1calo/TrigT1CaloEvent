@@ -1,3 +1,7 @@
+2012-11-02  Peter Faulkner  <pjwf@hep.ph.bham.ac.uk>
+       * Checkreq fixes.
+       * Tag as TrigT1CaloEvent-00-00-07
+
 2011-12-09  Peter Faulkner  <pjwf@hep.ph.bham.ac.uk>
        * Coverity fixes - Recursion in included headers.
        * Tag as TrigT1CaloEvent-00-00-06
