@@ -86,7 +86,7 @@ namespace LVL1 {
     int sliceEnergy(int slice) const;
 
 /** Error codes and utility information */
-    unsigned int key();
+    unsigned int key() const;
     bool isSaturated()    const;
     bool isEmSaturated()  const;
     bool isHadSaturated() const;

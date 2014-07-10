@@ -186,7 +186,7 @@ void JetElement::addSlice(int slice, int emEnergy, int hadEnergy,
 
 /** returns JE key - that is the key the JE had
 when it was created. Added for bug-testing.*/
-unsigned int JetElement::key(){
+unsigned int JetElement::key() const{
   return m_key;
 }
 

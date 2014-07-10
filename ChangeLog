@@ -1,3 +1,8 @@
+2014-07-08  Alan Watson <Alan.Watson@CERN.CH>
+       * Add many new classes for Run 2 (from Peter & myself)
+       * Small change to JetElement for compatibility with BS tester
+       * Tag as TrigT1CaloEvent-00-01-00
+
 2012-11-02  Peter Faulkner  <pjwf@hep.ph.bham.ac.uk>
        * Checkreq fixes.
        * Tag as TrigT1CaloEvent-00-00-07
