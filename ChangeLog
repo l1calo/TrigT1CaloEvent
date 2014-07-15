@@ -1,3 +1,7 @@
+2014-07-15  Alan Watson <Alan.Watson@CERN.CH>
+       * Add EnergyCMXData class (backplane transfer)
+       * Tag as TrigT1CaloEvent-00-01-01
+
 2014-07-08  Alan Watson <Alan.Watson@CERN.CH>
        * Add many new classes for Run 2 (from Peter & myself)
        * Small change to JetElement for compatibility with BS tester
