@@ -1,3 +1,7 @@
+2014-07-28  Alan Watson <Alan.Watson@CERN.CH>
+       * CPMTobRoI.h: Update RoI word header
+       * Tag as TrigT1CaloEvent-00-01-02
+
 2014-07-15  Alan Watson <Alan.Watson@CERN.CH>
        * Add EnergyCMXData class (backplane transfer)
        * Tag as TrigT1CaloEvent-00-01-01

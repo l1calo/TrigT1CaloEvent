@@ -47,7 +47,7 @@ class CPMTobRoI {
  private:
 
    /// RoI word ID
-   static const int s_wordIdVal       = 0x2;
+   static const int s_wordIdVal       = 0xa;
    //  Data locations
    static const int s_wordIdBit       = 28;
    static const int s_crateBit        = 26;
