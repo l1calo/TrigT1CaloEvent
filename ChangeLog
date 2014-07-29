@@ -1,3 +1,7 @@
+2014-07-29  Alan Watson <Alan.Watson@CERN.CH>
+       * CPMTobRoI_ClassDEF.h: correct small typo
+       * Tag as TrigT1CaloEvent-00-01-03
+
 2014-07-28  Alan Watson <Alan.Watson@CERN.CH>
        * CPMTobRoI.h: Update RoI word header
        * Tag as TrigT1CaloEvent-00-01-02

@@ -2,7 +2,7 @@
 #define CPMTobRoI_ClassDEF_H
 //Put here the CLASS_DEF macros for the STL containers you put in StoreGate
 
-#ifndef TRIGT1CALO_CPMTobROI_H
+#ifndef TRIGT1CALO_CPMTOBROI_H
 #include "TrigT1CaloEvent/CPMTobRoI.h"
 #endif
 
