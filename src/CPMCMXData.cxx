@@ -140,38 +140,78 @@ std::vector<unsigned int> LVL1::CPMCMXData::DataWords() const {
   return m_DataWords;
 }
 
-/** Local Coordinates for up to 5 TOBs */
-std::vector<unsigned int> LVL1::CPMCMXData::TOBLocalCoords() const {
-  std::vector<unsigned int> coords;
+
+/** Locations in Presence Map for up to 5 TOBs */
+std::vector<unsigned int> LVL1::CPMCMXData::TOBPresenceBits() const {
+
+  std::vector<unsigned int> bits;
   
   int ntob = 0;
   for (unsigned int i = 0; i < 16; ++i) {
     
     if ( (m_DataWords[0] & (1<<i)) > 0 ) {
       
-      unsigned int coord;
+      if (ntob < 5) bits.push_back(i);
+      ntob++;
       
-      switch (ntob) {
-        case 0:
-          coord = (m_DataWords[0] >> 16) & 3;
-          coords.push_back(coord);
-          break;
-        case 1:
-          coord = (m_DataWords[1] >> 16) & 3;
-          coords.push_back(coord);
-          break;
-        case 2:
-          coord = (m_DataWords[2] >> 16) & 3;
-          coords.push_back(coord);
-          break;
-        case 3:
-          coord = (m_DataWords[3] >> 8) & 3;
-          coords.push_back(coord);
-          break;
-        case 4:
-          coord = (m_DataWords[3] >> 16) & 3;
-          coords.push_back(coord);
-          break;
+    } // bit set in presence map
+    
+  } // step through presence map
+  
+  return bits;
+}
+
+
+/** Data words (2b LC + 5b Isol + 8b ET) for up to 5 TOBs */
+std::vector<unsigned int> LVL1::CPMCMXData::TOBWords() const {
+  
+  std::vector<unsigned int> data;
+
+  /// If PresenceMap empty just return
+  if ( (m_DataWords[0] & 0xffff) == 0 ) return data;
+  
+  /// Otherwise decode data words
+  int ntob = 0;
+  for (unsigned int i = 0; i < 16; ++i) {
+    
+    if ( (m_DataWords[0] & (1<<i)) > 0 ) {
+      
+      if (ntob < 5) {
+        
+        unsigned int word;
+        unsigned int coord;
+        unsigned int isol;
+        unsigned int et;
+      
+        switch (ntob) {
+          case 0:
+            coord = (m_DataWords[0] >> 16) & 3;
+            isol  = (m_DataWords[0] >> 18) & 0x1f;
+            et    =  m_DataWords[1] & 0xff;
+            break;
+          case 1:
+            coord = (m_DataWords[1] >> 16) & 3;
+            isol  = (m_DataWords[1] >> 18) & 0x1f;
+            et    = (m_DataWords[1] >> 8) & 0xff;
+            break;
+          case 2:
+            coord = (m_DataWords[2] >> 16) & 3;
+            isol  = (m_DataWords[2] >> 18) & 0x1f;
+            et    =  m_DataWords[2] & 0xff;
+            break;
+          case 3:
+            coord = (m_DataWords[3] >> 8) & 3;
+            isol  = (m_DataWords[3] >> 10) & 0x1f;
+            et    = (m_DataWords[2] >> 8) & 0xff;
+            break;
+          case 4:
+            coord = (m_DataWords[3] >> 16) & 3;
+            isol  = (m_DataWords[3] >> 18) & 0x1f;
+            et    =  m_DataWords[3] & 0xff;
+            break;
+        }
+        word = et + (isol<<8) + (coord<<13);
+        data.push_back(word);
       }
       ntob++;
       
@@ -179,42 +219,64 @@ std::vector<unsigned int> LVL1::CPMCMXData::TOBLocalCoords() const {
     
   } // step through presence map
   
-  return coords;
+  return data;
 }
 
 
-/** ET values for up to 5 TOBs */
-std::vector<unsigned int> LVL1::CPMCMXData::TOBET() const {
-  std::vector<unsigned int> et;
+/** L1Topo TOB words (1bRO + 4b CPM + 3b Chip + 3b LC + 5b Isol + 8b ET) for up to 5 TOBs */
+std::vector<unsigned int> LVL1::CPMCMXData::TopoTOBs() const {
+
+  std::vector<unsigned int> data;
+
+  /// If PresenceMap empty just return
+  if ( (m_DataWords[0] & 0xffff) == 0 ) return data;
   
+  /// Otherwise decode data words
   int ntob = 0;
   for (unsigned int i = 0; i < 16; ++i) {
     
     if ( (m_DataWords[0] & (1<<i)) > 0 ) {
       
-      unsigned int value;
+      if (ntob < 5) {
+        
+        unsigned int chip = i/2;
+        unsigned int rl   = (i&1) << 2;
+        
+        unsigned int word;
+        
+        unsigned int coord;
+        unsigned int isol;
+        unsigned int et;
       
-      switch (ntob) {
-        case 0:
-          value = m_DataWords[1] & 0xff;
-          et.push_back(value);
-          break;
-        case 1:
-          value = (m_DataWords[1] >> 8) & 0xff;
-          et.push_back(value);
-          break;
-        case 2:
-          value = m_DataWords[2] & 0xff;
-          et.push_back(value);
-          break;
-        case 3:
-          value = (m_DataWords[2] >> 8) & 0xff;
-          et.push_back(value);
-          break;
-        case 4:
-          value = m_DataWords[3] & 0xff;
-          et.push_back(value);
-          break;
+        switch (ntob) {
+          case 0:
+            coord = ((m_DataWords[0] >> 16) & 3) + rl;
+            isol  =  (m_DataWords[0] >> 18) & 0x1f;
+            et    =   m_DataWords[1] & 0xff;
+            break;
+          case 1:
+            coord = ((m_DataWords[1] >> 16) & 3) + rl;
+            isol  =  (m_DataWords[1] >> 18) & 0x1f;
+            et    =  (m_DataWords[1] >> 8) & 0xff;
+            break;
+          case 2:
+            coord = ((m_DataWords[2] >> 16) & 3) + rl;
+            isol  =  (m_DataWords[2] >> 18) & 0x1f;
+            et    =   m_DataWords[2] & 0xff;
+            break;
+          case 3:
+            coord = ((m_DataWords[3] >> 8) & 3) + rl;
+            isol  =  (m_DataWords[3] >> 10) & 0x1f;
+            et    =  (m_DataWords[2] >> 8) & 0xff;
+            break;
+          case 4:
+            coord = ((m_DataWords[3] >> 16) & 3) + rl;
+            isol  =  (m_DataWords[3] >> 18) & 0x1f;
+            et    =   m_DataWords[3] & 0xff;
+            break;
+        }
+        word = et + (isol<<8) + (coord<<13) + (chip<<16) + (m_module<<19);
+        data.push_back(word);
       }
       ntob++;
       
@@ -222,50 +284,14 @@ std::vector<unsigned int> LVL1::CPMCMXData::TOBET() const {
     
   } // step through presence map
   
-  return et;
+  // Set overflow flags if needed
+  if (ntob > 5) {
+    unsigned int overflow = 1<<23;
+    for (unsigned int tob = 0; tob < data.size(); ++tob) data[tob] += overflow;
+  }
+  
+  return data;
 }
 
-
-/** Isolation words for up to 5 TOBs */
-std::vector<unsigned int> LVL1::CPMCMXData::TOBIsol() const {
-  std::vector<unsigned int> isol;
-  
-  int ntob = 0;
-  for (unsigned int i = 0; i < 16; ++i) {
-    
-    if ( (m_DataWords[0] & (1<<i)) > 0 ) {
-      
-      unsigned int value;
-      
-      switch (ntob) {
-        case 0:
-          value = (m_DataWords[0] >> 18) & 0x1f;
-          isol.push_back(value);
-          break;
-        case 1:
-          value = (m_DataWords[1] >> 18) & 0x1f;
-          isol.push_back(value);
-          break;
-        case 2:
-          value = (m_DataWords[2] >> 18) & 0x1f;
-          isol.push_back(value);
-          break;
-        case 3:
-          value = (m_DataWords[3] >> 10) & 0x1f;
-          isol.push_back(value);
-          break;
-        case 4:
-          value = (m_DataWords[3] >> 18) & 0x1f;
-          isol.push_back(value);
-          break;
-      }
-      ntob++;
-      
-    } // bit set in presence map
-    
-  } // step through presence map
-  
-  return isol;
-}
 
 } // end namespace

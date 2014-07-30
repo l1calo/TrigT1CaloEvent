@@ -47,9 +47,9 @@
     int type() const;
     unsigned int presenceMap() const;
     std::vector<unsigned int> DataWords() const;
-    std::vector<unsigned int> TOBLocalCoords() const;
-    std::vector<unsigned int> TOBET() const;
-    std::vector<unsigned int> TOBIsol() const;
+    std::vector<unsigned int> TOBPresenceBits() const;
+    std::vector<unsigned int> TOBWords() const;
+    std::vector<unsigned int> TopoTOBs() const;
       
   /** Internal data */
     private:

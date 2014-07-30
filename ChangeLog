@@ -1,3 +1,11 @@
+2014-07-30  Alan Watson <Alan.Watson@CERN.CH>
+       * CPMCMXData: Tweak functions for uses 
+         - Add function to return vector of TOB words (2b LC + isol + ET)
+	 - Add function to return vector of corresponding presence bit numbers
+	 - Add function to return vector of L1Topo input words
+	 - Remove other TOB data functions (now redundant)
+       * Tag as TrigT1CaloEvent-00-01-04
+
 2014-07-29  Alan Watson <Alan.Watson@CERN.CH>
        * CPMTobRoI_ClassDEF.h: correct small typo
        * Tag as TrigT1CaloEvent-00-01-03
