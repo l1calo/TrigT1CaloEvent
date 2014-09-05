@@ -1,3 +1,8 @@
+2014-09-05  Alan Watson <Alan.Watson@CERN.CH>
+       * Many new classes for CMX DAQ, RoI readout and 
+         data transfer to L1Topo
+       * Tag as TrigT1CaloEvent-00-01-05
+
 2014-07-30  Alan Watson <Alan.Watson@CERN.CH>
        * CPMCMXData: Tweak functions for uses 
          - Add function to return vector of TOB words (2b LC + isol + ET)
