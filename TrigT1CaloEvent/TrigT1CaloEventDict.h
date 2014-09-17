@@ -3,10 +3,12 @@
 
 #include "DataModel/DataVector.h"
 #include "TrigT1CaloEvent/TriggerTower.h"
+#include "TrigT1CaloEvent/CPMTower.h"
 #include "TrigT1CaloEvent/JetElement.h"
 
 struct temp {
   DataVector<LVL1::TriggerTower > m_Trig;
+  DataVector<LVL1::CPMTower > m_CpmTrig;
   DataVector<LVL1::JetElement > mTrig2;
 };
 
