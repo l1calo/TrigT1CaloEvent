@@ -1,3 +1,8 @@
+2014-10-20  Alexander Mazurov <alexander.mazurov@cern.ch>
+       * Add python dictionaries for CMXCPTob and CMXCPHits 
+       * Tag as TrigT1CaloEvent-00-01-06
+
+
 2014-09-05  Alan Watson <Alan.Watson@CERN.CH>
        * Many new classes for CMX DAQ, RoI readout and 
          data transfer to L1Topo
