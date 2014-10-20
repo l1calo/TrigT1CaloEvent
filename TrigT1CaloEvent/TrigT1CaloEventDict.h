@@ -5,11 +5,17 @@
 #include "TrigT1CaloEvent/TriggerTower.h"
 #include "TrigT1CaloEvent/CPMTower.h"
 #include "TrigT1CaloEvent/JetElement.h"
+#include "TrigT1CaloEvent/CMXCPTob.h"
+#include "TrigT1CaloEvent/CMXCPHits.h"
 
 struct temp {
   DataVector<LVL1::TriggerTower > m_Trig;
-  DataVector<LVL1::CPMTower > m_CpmTrig;
-  DataVector<LVL1::JetElement > mTrig2;
+  DataVector<LVL1::CPMTower> m_CpmTrig;
+  DataVector<LVL1::JetElement> m_JetTrig;
+  DataVector<LVL1::CMXCPTob> m_CmxCPTob;
+  DataVector<LVL1::CMXCPHits> m_CmxCPHits;
+
+
 };
 
 #endif
